@@ -236,10 +236,9 @@ function getReviewCount(book) {
 }
 const otherBook = getBook(3);
 console.log(getReviewCount(otherBook));
-
-// The Array Map Method
 */
 
+/*
 function getReviewCount(book) {
   const goodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
@@ -287,3 +286,41 @@ console.log(sorted);
 
 const sortedByPages = book.slice().sort((a, b) => a.pages - b.pages);
 console.log(sortedByPages);
+
+// Working with immutable arrays
+// 1) Add a book object to array
+const newBook = { id: 6, title: "Jujutsu Kaisen", author: "Gege Akutami" };
+const booksAfterAdd = [...book, newBook];
+console.log(booksAfterAdd);
+
+// 2) Delete a book object from array
+const bookAfterDelete = booksAfterAdd.filter((b) => b.id !== 3);
+console.log(bookAfterDelete);
+
+// 3) Update book objects in the array
+const bookAfterUpdate = bookAfterDelete.map((b) =>
+  b.id === 1 ? { ...b, pages: 1 } : b
+);
+console.log(bookAfterUpdate);
+*/
+
+// Async JS Promises
+// fetch("https://jsonplaceholder.typicode.com/todos/1")
+//   .then((d) => d.json())
+//   .then((d) => console.log(d));
+//   console.log("Gojo Satoru");
+
+async function getToDos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const data = await res.json();
+  console.log(data);
+
+  return data;
+}
+
+// Result value of async fn is always a promise
+const todos = await getToDos();
+console.log(todos);
+
+getToDos();
+console.log("Test");
