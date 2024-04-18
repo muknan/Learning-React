@@ -143,6 +143,7 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
 // Destructuring
 const book = getBook(2);
 // Without destructuring
@@ -235,3 +236,54 @@ function getReviewCount(book) {
 }
 const otherBook = getBook(3);
 console.log(getReviewCount(otherBook));
+
+// The Array Map Method
+*/
+
+function getReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+// Array MAP Method
+const book = getBooks(); // getBooks() return object stored in variable "data"
+
+const m = [1, 2, 3, 4, 5].map((m) => m * 2);
+console.log(m);
+
+const bookTitles = book.map((t) => t.title);
+console.log(bookTitles);
+
+const essentialBookData = book.map((b) => ({
+  title: b.title,
+  author: b.author,
+  reviewsCount: getReviewCount(b),
+}));
+
+console.log(essentialBookData);
+
+// Filter method
+const thinBooksWithMovie = book
+  .filter((b) => b.pages < 1000)
+  .filter((b) => b.hasMovieAdaptation);
+console.log(thinBooksWithMovie);
+
+const adventureBooks = book
+  .filter((b) => b.genres.includes("adventure"))
+  .map((b) => b.title);
+console.log(adventureBooks);
+
+// Reduce method
+const totalPages = book
+  .filter((b) => b.genres.includes("adventure"))
+  .reduce((acc, b) => acc + b.pages, 0);
+console.log(totalPages);
+
+// Sort method
+const arr = [3, 7, 1, 9, 6];
+const sorted = arr.slice().sort((a, b) => a - b); // slice() to create a copy of the array before sorting to prevent mutation of original array
+console.log(sorted);
+
+const sortedByPages = book.slice().sort((a, b) => a.pages - b.pages);
+console.log(sortedByPages);
