@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 // Destructuring
-const book = getBook(1);
+const book = getBook(2);
 // Without destructuring
 // const title = book.title;
 // const author = book.author;
@@ -173,3 +173,65 @@ const updatedBook = {
 };
 // Having changed property of pages after spreading ...book overrides the value of pages in the object.
 updatedBook;
+
+// Arrow functions
+const getYear = (yr) => yr.split("-")[0];
+// Must return value if using a fn block for multiple lines
+// const getYear = (yr) => {
+//   return yr.split("-")[0];
+// };
+console.log(getYear(publicationDate));
+
+// Template Literals
+const summary = `${title} by ${author} is an excellent book published in ${getYear(
+  publicationDate
+)} which ${
+  hasMovieAdaptation
+    ? "has a movie adaptation"
+    : "does not have a movie adaptation."
+}`;
+console.log(summary);
+
+// Ternary operator
+const bookSize = pages > 1000 ? "Hefty Book." : "Thin Book.";
+console.log(bookSize);
+console.log(`${title} is a ${bookSize}`);
+
+// Short circuiting
+console.log(true && "Some string");
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This book has a movie.");
+console.log(!hasMovieAdaptation && "This book has no movie.");
+
+// falsy value: 0, '', null, undefined, false, NaN
+console.log("Gojo Satoru" && "The Honored One");
+console.log(0 && "Some string");
+
+// || (OR) returns immediately when value is true
+console.log(true || "Some string");
+console.log(false || "Some string");
+console.log(false ?? "Some string");
+
+// Book does not have korean translation
+console.log(book.translations.korean);
+const koreanTranslation = book.translations.korean || "Not Translated!";
+console.log(koreanTranslation);
+
+console.log(book.reviews.librarything.reviewsCount);
+// This gives us wrong value, because 0 is considered false, but in our
+// cause we have 0 reviews for librarything which we want in the variable.
+const countWrong = book.reviews.librarything.reviewsCount || "No data";
+console.log(countWrong);
+
+// To fix the above problem we use Nullish coalescing operator (??)
+const countRight = book.reviews.librarything.reviewsCount ?? "No data";
+console.log(countRight);
+
+// Optional chaining
+function getReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+const otherBook = getBook(3);
+console.log(getReviewCount(otherBook));
