@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 // import ReactDOM from "react-dom"; // import before v18
@@ -48,6 +48,7 @@ const pizzaData = [
   },
 ];
 
+// Main component
 function App() {
   return (
     <div className="container">
@@ -74,26 +75,65 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData;
+  // const pizzas = [];
+  const pizzaInStock = pizzas.length > 0;
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <ul className="pizzas">
-        {pizzaData.map((p) => (
-          <Pizza pizzaObj={p} key={p.name} />
-        ))}
-      </ul>
+      {/* {pizzaInStock && (
+        <ul className="pizzas">
+          {pizzaData.map((p) => (
+            <Pizza pizzaObj={p} key={p.name} />
+          ))}
+        </ul>
+      )} */}
+
+      {pizzaInStock ? (
+        <>
+          {/* React Fragment*/}
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzaData.map((p) => (
+              <Pizza pizzaObj={p} key={p.name} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>
+          Unfortunately, we are unable to process any orders right now. Please
+          check back again later!
+        </p>
+      )}
     </main>
   );
 }
 
-function Pizza(props) {
+function Pizza({ pizzaObj }) {
+  // if (props.pizzaObj.soldOut) return null;
+
   return (
-    <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+    // <li className={pizzaObj.soldOut ? "pizza sold-out" : "pizza"} />
+    // <li className={`pizza ${pizzaObj.soldOut && "sold-out"}`} />
+    // Using && operator - short circuiting
+
+    <li className={`pizza${pizzaObj.soldOut ? " sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+
+        {/* {pizzaObj.soldOut ? (
+          <span>SOLD OUT 😭</span>
+        ) : (
+          <span>pizzaObj.price</span>
+        )} */}
+
+        <span>{pizzaObj.soldOut ? "Sold out 😭" : pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -108,13 +148,33 @@ function Footer() {
   // if (hour >= openHours && hour <= closeHours) alert("We are currently open!");
   // else alert("Sorry we are closed");
 
+  // if (!isOpen) return <p>CLOSED</p>;
+
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()} We're currently
-      {isOpen ? " open!" : " closed!"}
+      {isOpen ? (
+        <Order closeHours={closeHours} openHours={openHours} />
+      ) : (
+        <p>
+          We're open until {closeHours}:00. Come visit us later at {openHours}
+          :00
+        </p>
+      )}
     </footer>
   );
   // return React.createElement("footer", null, "We're currently open!");
+}
+
+function Order({ closeHours, openHours }) {
+  return (
+    <div className="order">
+      <p>
+        Order online and enjoy the Pizzas with Nova Scotian ingredients! Open
+        from {openHours}:00 to {closeHours}:00
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
 }
 
 // React v18
