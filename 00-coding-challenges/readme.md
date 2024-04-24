@@ -17,3 +17,7 @@
 #### Exercise 2
 
 [Link](https://codesandbox.io/p/sandbox/react-exercise-accordion-starter-forked-zpfwnh?file=%2Fsrc%2FApp.js%3A44%2C48)
+
+#### Exercise 3
+
+[Link](https://codesandbox.io/p/sandbox/react-exercise-accordion-starter-forked-ysqntk?file=%2Fsrc%2FApp.js)
