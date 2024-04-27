@@ -10,6 +10,10 @@
 
 [Link](https://codesandbox.io/p/sandbox/musing-sun-x77yn9?file=%2Fsrc%2FApp.js%3A64%2C26)
 
+#### Coding Challenge 5
+
+[Link](https://codesandbox.io/p/sandbox/react-challenge-text-expander-starter-forked-grrw9s?file=%2Fsrc%2FApp.js%3A57%2C15)
+
 #### Exercise 1
 
 [Link](https://codesandbox.io/p/sandbox/react-exercise-flashcards-starter-forked-dpd6fh?file=%2Fsrc%2FApp.js%3A53%2C75)
