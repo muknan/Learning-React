@@ -111,8 +111,10 @@ export default function App() {
           setError("");
           // console.log(movies); // Stale state (tempMovieData)
         } catch (err) {
-          console.error(err.message);
-          if (err.name !== "AbortError") setError(err.message);
+          if (err.name !== "AbortError") {
+            setError(err.message);
+            console.error(err.message);
+          }
         } finally {
           setIsLoading(false);
         }
@@ -122,6 +124,7 @@ export default function App() {
         setError("");
         return;
       }
+      handleCloseMovie();
       fetchMovies();
 
       return () => controller.abort();
@@ -324,6 +327,20 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   } = movie;
 
   console.log(title, year);
+
+  useEffect(
+    function () {
+      function callback(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+          console.log("CLOSING");
+        }
+      }
+      document.addEventListener("keydown", callback);
+      return () => document.removeEventListener("keydown", callback);
+    },
+    [onCloseMovie]
+  );
 
   useEffect(
     function () {
