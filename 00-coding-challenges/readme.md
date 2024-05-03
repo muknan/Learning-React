@@ -18,6 +18,10 @@
 
 [Link](https://codesandbox.io/p/sandbox/react-challenge-currency-converter-starter-forked-qxq4f2?file=%2Fsrc%2FApp.js%3A13%2C18)
 
+#### Coding Challenge 6
+
+[Link](https://codesandbox.io/p/sandbox/react-challenge-usegeolocation-starter-forked-5m23sm?file=%2Fsrc%2FApp.js%3A13%2C36)
+
 #### Exercise 1
 
 [Link](https://codesandbox.io/p/sandbox/react-exercise-flashcards-starter-forked-dpd6fh?file=%2Fsrc%2FApp.js%3A53%2C75)
