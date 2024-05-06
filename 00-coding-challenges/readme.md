@@ -18,9 +18,9 @@
 
 [Link](https://codesandbox.io/p/sandbox/react-challenge-currency-converter-starter-forked-qxq4f2?file=%2Fsrc%2FApp.js%3A13%2C18)
 
-#### Coding Challenge 6
+#### Coding Challenge 7
 
-[Link](https://codesandbox.io/p/sandbox/react-challenge-usegeolocation-starter-forked-5m23sm?file=%2Fsrc%2FApp.js%3A13%2C36)
+[Link](https://codesandbox.io/p/sandbox/react-challenge-usereducer-bank-starter-forked-xlcdm9?file=%2Fsrc%2FApp.js%3A69%2C18)
 
 #### Exercise 1
 
