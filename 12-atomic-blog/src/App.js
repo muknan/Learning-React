@@ -98,7 +98,7 @@ function FormAddPost() {
 
   const handleSubmit = function (e) {
     e.preventDefault();
-    if (!body || !title) return;
+    if (!body.trim() || !title.trim()) return;
     onAddPost({ title, body });
     setTitle("");
     setBody("");
