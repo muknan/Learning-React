@@ -6,7 +6,14 @@ function Header() {
   return (
     <header className="font-pizza flex items-center justify-between border-b border-stone-300 bg-yellow-400 px-4 py-3 uppercase sm:px-6">
       <Link to="/" className="tracking-widest hover:text-stone-600 sm:text-xl">
-        Fast React Pizza Co.
+        <div className="flex items-center justify-center gap-2">
+          <img
+            src="../../public/logo.png"
+            alt="React Pizzeria Logo"
+            className="h-10"
+          />
+          <span>React Pizzeria</span>
+        </div>
       </Link>
       <SearchOrder />
       <Username />
