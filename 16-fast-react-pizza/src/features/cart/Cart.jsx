@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart } from "./cartSlice";
 import { getUser } from "../user/userSlice";
 import EmptyCart from "./EmptyCart";
+import NoUser from "../user/NoUser";
 
 function Cart() {
   const { username } = useSelector(getUser);
   const cart = useSelector(getCart);
   const dispatch = useDispatch();
 
+  if (!username) return <NoUser />;
   if (!cart.length) return <EmptyCart />;
 
   return (
@@ -25,7 +27,7 @@ function Cart() {
         ))}
       </ul>
 
-      <div className="mt-6 space-x-2">
+      <div className="mt-6 flex items-center justify-start space-x-2">
         <Button to="/order/new" type="primary">
           Order pizzas
         </Button>

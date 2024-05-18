@@ -8,6 +8,7 @@ import { fetchAddress, getUser } from "../user/userSlice";
 import EmptyCart from "../cart/EmptyCart";
 import store from "../../store";
 import { formatCurrency } from "../../utils/helpers";
+import NoUser from "../user/NoUser";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -36,6 +37,7 @@ function CreateOrder() {
   const priorityPrice = withPriority ? totalCartPrice * 0.2 : 0;
   const totalPrice = totalCartPrice + priorityPrice;
 
+  if (!username) return <NoUser />;
   if (!cart.length) return <EmptyCart />;
   return (
     <div className="px-4 py-6">
@@ -84,7 +86,7 @@ function CreateOrder() {
             )}
           </div>
           {!position.latitude && !position.longitude && (
-            <span className="absolute right-[3px] top-[34px] z-10 sm:top-0.5 md:right-[5px] md:top-[5px]">
+            <span className="absolute right-[3px] top-[2.174rem] z-10 sm:top-0.5 md:right-[5px] md:top-[5px]">
               <Button
                 disabled={isLoadingPosition}
                 type="small"

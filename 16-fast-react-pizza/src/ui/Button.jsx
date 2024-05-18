@@ -12,7 +12,7 @@ function Button({ children, disabled = false, to, type, onClick }) {
       base +
       " px-3 py-2 text-xs tracking-normal md:tracking-wide md:px-3.5 md:py-2.5",
     secondary:
-      "inline-block rounded-full border-2 border-stone-300 font-semibold uppercase tracking-wide text-stone-500 transition-colors duration-200 hover:bg-stone-300/25 hover:text-stone-600 focus:bg-stone-300/25 focus:text-stone-600 focus:outline-none focus:ring focus:ring-stone-300 focus:ring-offset-2 disabled:cursor-not-allowed px-4 py-2.5 md:px-6 sm:py-3.5",
+      "inline-block text-sm rounded-full border-2 border-stone-300 font-semibold uppercase tracking-wide text-stone-500 transition-colors duration-200 hover:bg-stone-300/25 hover:text-stone-600 focus:bg-stone-300/25 focus:text-stone-600 focus:outline-none focus:ring focus:ring-stone-300 focus:ring-offset-2 disabled:cursor-not-allowed px-4 py-[10.6px] md:px-6 sm:py-[14.6px]",
     round: base + " px-2.5 py-1 text-sm md:px-3.5 md:py-2",
   };
 

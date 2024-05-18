@@ -2,8 +2,10 @@ import Header from "./Header";
 import Loader from "./Loader";
 import CartOverview from "../features/cart/CartOverview";
 import { Outlet, useNavigation } from "react-router-dom";
+import usePreventZoom from "./usePreventZoom";
 
 function AppLayout() {
+  usePreventZoom();
   const navigation = useNavigation();
 
   const isLoading = navigation.state === "loading";
