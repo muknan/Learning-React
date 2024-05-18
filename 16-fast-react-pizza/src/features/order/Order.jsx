@@ -6,14 +6,21 @@ import {
   formatDate,
 } from "../../utils/helpers";
 import OrderItem from "./OrderItem";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import UpdateOrder from "./UpdateOrder";
+import Button from "../../ui/Button";
 
 // Test ID: IIDSAT
 
 function Order() {
   const order = useLoaderData();
+  const [warning, setWarning] = useState(false);
 
   const fetcher = useFetcher();
+
+  function handleWarning() {
+    setWarning(true);
+  }
 
   useEffect(
     function () {
@@ -90,6 +97,14 @@ function Order() {
         <p className="font-bold">
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
+      </div>
+      <div className="text-right">
+        {!priority && !warning && (
+          <Button type="primary" onClick={handleWarning}>
+            Prioritize order
+          </Button>
+        )}
+        {!priority && warning && <UpdateOrder order={order} />}
       </div>
     </div>
   );
